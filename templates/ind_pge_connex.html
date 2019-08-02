@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <title>Pure Beurre </title>
+
+    <!-- Font Awesome Icons -->
+    {% load static %}
+    <!-- jquery -->
+    
+
+    <!-- bootstrap -->
+   
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css">
+   <link rel="stylesheet" type="text/css" href="{% static 'css/creative.css' %}"> 
+    
+
+  
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+      <img src="{% static 'img/logo_pur.png' %}" alt="logo_pur_beurre">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Pure Beurre</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#query">
+            <form action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                
+                {{ form}}
+            </form>
+          </a> 
+              
+
+          </li>
+          <li class="nav-item">
+            {% if user.is_authenticated %}
+              <a class="nav-link js-scroll-trigger" href="{% url 'ind_pge_connex' %}"><i class="fa fa-user fa-2x" aria-hidden="true" ></i></a>
+            {% else %}
+              <a class="nav-link js-scroll-trigger" href="{% url 'user_login' %}"><button>Créer un compte </button></a>
+            {% endif %}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'save' %}">
+                 <img src="{% static 'img/Ca.JPG'  %}" height="25px" width="30px" alt="Mes aliments"></a> 
+            </button>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-10  col-xs-10 align-self-end">
+          <h1 class="text-uppercase text-white font-weight-bold">{{ user.username }}</h1>
+          <hr class="divider my-4">
+        </div>
+        
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="page-section bg-primary" id="about">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h3 class="text-white">{{user.email}}</h3>
+          
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  
+
+ <!-- Contact Section -->
+  <!-- Contact Section -->
+   <section class="page-section" id="contact">
+     <div class="container">
+       <div class="row justify-content-center">
+         <div class="col-lg-8 text-center">
+           <h2 class="mt-0">Contactez-nous !</h2>
+           <hr class="divider my-4">
+           <p class="text-muted mb-5">Ah, la recherche d'aliments saints ! Un défi intéressant !</p>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+           <i class="fa fa-phone" style="font-size:48px;color:red"></i>
+           
+           <div>+1 (202) 555-0149</div>
+         </div>
+         <div class="col-lg-4 mr-auto text-center mb-5 mb-lg-0 ">
+           <i class="fa fa-envelope" style="font-size:48px;color:red"></i>
+           <!-- Make sure to change the email address in anchor text AND the link below! -->
+           <a class="d-block" href="mailto:contact@yourwebsite.com">contact@purebeurre.com</a>
+         </div>
+       </div>
+     </div>
+   </section>
+
+   <!-- Footer -->
+   <footer class="bg-light py-5">
+     <div class="container">
+       <div class="row">
+         <div class="col-lg-6">
+           <div class="small text-center text-muted">Mentions legales </div>
+         </div>
+         <div class="col-lg-6">
+           <div class="small text-center text-muted">
+           <a  href="#contact">Contact</a>
+           
+           </div>
+         </div>
+       </div>
+     </div>
+   </footer>
+
+  <!-- Bootstrap core JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+  
+  
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/creative.min.js' %}"></script>
+
+</body>
+
+</html>

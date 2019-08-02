@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <title>Pure Beurre </title>
+  {% load static %}
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css">
+ <link rel="stylesheet" type="text/css" href="{% static 'css/creative.css' %}"> 
+ <style type="text/css">
+   header.masthead {
+     padding-top: 10rem;
+     padding-bottom: calc(10rem - 72px);
+     background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url({{prod_image_0}});
+     background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
+                  url({{prod_image_0}});
+     
+     background-position: center;
+     background-repeat: no-repeat;
+     background-attachment: scroll;
+     background-size: cover;
+   }
+ </style>
+  
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+      <img src="{% static 'img/logo_pur.png' %}" alt="logo_pur_beurre">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Pure Beurre</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#query">
+            <form action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                
+                {{ form}}
+            </form>
+          </a> 
+              
+
+          </li>
+          <li class="nav-item">
+            {% if user.is_authenticated %}
+              <a class="nav-link js-scroll-trigger" href="{% url 'ind_pge_connex' %}"><i class="fa fa-user fa-2x" aria-hidden="true" ></i></a>
+            {% else %}
+              <a class="nav-link js-scroll-trigger" href="{% url 'user_login' %}"><button>Créer un compte </button></a>
+            {% endif %}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'save' %}">
+                 <img src="{% static 'img/Ca.JPG'  %}" height="25px" width="30px" alt="Mes aliments"></a> 
+            </button>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-lg-10 align-self-end">
+          <h1 class="text-uppercase text-white font-weight-bold text-center">{{ prod_name_0 }}</h1>
+          <hr class="divider my-4">
+        </div>
+        
+      </div>
+    </div>
+  </header>
+
+  
+  <section class="page-section bg-primary">
+    <div class="container">
+
+      <div class="row h-100">
+        {% for prod in prod_list %}
+          <div class="col-lg-4 text-center">
+            <div style="position:absolute;top:-30px; left:275px; z-index:1;font-size:35px; color: white;">
+                <div class="roundedImageBorder text-center" style= "background-color:red; ">{{prod.nutrition_score}}
+                </div>
+            </div> 
+            <div >
+              <img src= {{prod.image}} width="250" height="250"alt="produit substitut a" class="border border-primary rounded">
+              <div >{{prod.name_product}} </div>
+              <form action="{% url 'save' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="subs_0" value="{{prod.name_product}}+{{prod_name_0}}+{{prod_image_0}}+{{prod.image}}+{{prod.nutrition_score}}+{{prod.nutriments}}+{{prod.url}}+{{prod.nutrient_levels}}">
+                <button style="display: block; margin: 0px auto 0 auto;"type="submit" class="btn btn-success">
+                  <i class="fa fa-floppy-o" aria-hidden="true"></i> Sauvegarder
+                </button>
+              </form>
+            </div>
+          </div> 
+        {% endfor %}
+        
+      
+  
+      </div> 
+      
+    </div>
+  </section>
+  
+  {% if prod_list.has_other_pages %}
+    <nav aria-label="Page navigation conatiner"></nav>
+    <ul class="pagination justify-content-center">
+      {% if prod_list.has_previous %}
+      <li><a href="?page={{ prod_list.previous_page_number }}" class="page-link">&laquo; PRECEDENT </a></li>
+      {% endif %}
+      {% if prod_list.has_next %}
+      <li><a href="?page={{ prod_list.next_page_number }}" class="page-link"> SUIVANT &raquo;</a></li>
+      {% endif %}
+    </ul>
+    </nav>
+  {% endif %}
+    
+  
+  
+  <!-- Footer-->
+  <footer class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="small text-center text-muted">Mentions legales </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="small text-center text-muted">
+          <a  href="#contact">Contact</a>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Bootstrap core JavaScript -->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+  <!-- Plugin JavaScript -->
+  
+  
+ 
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/creative.min.js' %}"></script>
+
+</body>
+
+</html>

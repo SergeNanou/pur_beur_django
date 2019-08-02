@@ -1,0 +1,13 @@
+{% extends "connect/base.html" %}
+{% block body_block %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>Bienvenue sur notre page de Creation de Compte/Connexion pour les amateurs de la bonne bouffre</h1>
+    {% if user.is_authenticated %}
+        <h2>Hello {{ user.username }}</h2>
+    {% else %}
+        <h2>Créez un compte ou connectez-vous pour rechercher des aliments saints</h2>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

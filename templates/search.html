@@ -1,0 +1,14 @@
+{% extends "ind_acceuil.html" %}
+{% block search_form %}
+
+
+<form action="{% url 'search' %}" method="post">
+    {% csrf_token %}
+    <span class="btn btn-info">
+    {{ form}}
+   
+    <input type="submit" class="btn btn-success" value="Chercher" />
+    </span>
+</form>
+            
+{% endblock %}
