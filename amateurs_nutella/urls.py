@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^register/$', connect.views.register, name='register'),
     url(r'^user_login/$', connect.views.user_login, name='user_login'),
+    url(r'^legal/$', connect.views.legal, name='legal'),
     url(r'^$', research.views.reception, name='reception'),
     url(r'^search/$', research.views.search, name='search'),
     url(r'^save/$', save.views.save_prod, name='save'),

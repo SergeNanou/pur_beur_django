@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import login_required
 def ind_pge_connex(request):
     form = SearchForm()
     return render(request,'ind_pge_connex.html',{'form':form})
+def legal(request):
+    return render(request, 'Mentions_legales.html')
 def index(request):
     return render(request,'connect/index.html')
 @login_required
