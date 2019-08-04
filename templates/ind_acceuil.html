@@ -8,10 +8,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" >
     
+  
+
+  
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
+    
+  
+   
   <title>Pure Beurre </title>
 
     <!-- Font Awesome Icons -->
@@ -25,7 +31,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css">
   <link rel="stylesheet" type="text/css" href="{% static 'css/creative.min.css' %}"> 
     
@@ -48,10 +54,10 @@
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#query">
-              <form action="{% url 'search' %}" method="post">
+              <form id="form1" action="{% url 'search' %}" method="post">
                   {% csrf_token %}
                   
-                  {{ form}}
+                  {{ form.as_p}}
               </form>
             </a>
 
@@ -89,12 +95,13 @@
         </div>
         <div class="col-lg-8 align-self-baseline">
           <p class="text-white-75 font-weight-light mb-5">Trouvez un produit de substitution pour ceux que vous consommez tous les jours</p>
-          
+         
             {% block search_form %}
             
             {% endblock %}
           
         </div>
+
         <p class="text-white-75 font-weight-light mb-5">{{message}}</p>
       </div>
     </div>
@@ -129,6 +136,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
           <h2 class="mt-0">Contactez-nous !</h2>
+          
           <hr class="divider my-4">
           <p class="text-muted mb-5">Ah, la recherche d'aliments saints ! Un défi intéressant !</p>
         </div>
@@ -171,7 +179,16 @@
  
 
   <!-- Custom scripts for this template -->
-  <script src="{% static 'js/creative.min.js' %}"></script>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+  
+  
+  <script src="{% static 'js/creative.js' %}"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
+  <script src="{% static 'js/auto.js' %}"></script>
   
 
 </body>

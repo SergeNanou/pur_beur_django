@@ -1,5 +1,5 @@
 from django import forms
 
 class SearchForm(forms.Form):
-    q = forms.CharField(label='Produit', 
-                    widget=forms.TextInput(attrs={'placeholder': 'Rechercher','id': 'query'}))
+    query = forms.CharField(label='Produit', 
+                    widget=forms.TextInput(attrs={'class':'query','id': 'query', 'placeholder': 'Rechercher'}))

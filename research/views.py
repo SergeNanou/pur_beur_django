@@ -36,7 +36,7 @@ def search(request):
         form = SearchForm(request.POST)
         request.session['search-persons-post'] = request.POST
         if form.is_valid():
-            product = form.cleaned_data['q']
+            product = form.cleaned_data['query']
 
     
             if product:
@@ -46,7 +46,7 @@ def search(request):
                     nutri = list(Product.objects.filter(name_product__contains=product).values('nutrition_score'))[0]
                     prod_image_0 = list(Product.objects.filter(name_product__contains=product).values('image'))[0]
                     prod_image_0 = prod_image_0['image']
-                    
+                    # prod_image_0 = '/media/'+ prod_image_0
                     c = list(Category.objects.filter(cat_product__name_product__contains=product).values('name'))[0]
                     if nutri['nutrition_score'] == 'e' or nutri['nutrition_score'] == 'd' or nutri['nutrition_score'] == 'c':
                         prod_list = list(Product.objects.filter(category__name=c['name']).filter(Q(nutrition_score='a')|Q(nutrition_score='b')).values().order_by('?'))

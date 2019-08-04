@@ -51,7 +51,7 @@
             <form action="{% url 'search' %}" method="post">
                 {% csrf_token %}
                 
-                {{ form}}
+                {{ form.as_p}}
             </form>
           </a> 
               
@@ -152,7 +152,18 @@
    </footer>
 
   <!-- Bootstrap core JavaScript -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+  
+  
+  <script src="{% static 'js/creative.js' %}"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
+  <script src="{% static 'js/auto.js' %}"></script>
+  
+   
   
   
 

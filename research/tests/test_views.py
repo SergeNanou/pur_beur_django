@@ -8,8 +8,6 @@ from research.models import Product
 
 class SearchPageTestCase(TestCase):
     
-
-
     def test_post_search(self):
         self.credentials = {
             'username': 'testuser',

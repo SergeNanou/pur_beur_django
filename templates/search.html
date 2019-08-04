@@ -2,13 +2,17 @@
 {% block search_form %}
 
 
-<form action="{% url 'search' %}" method="post">
+<form id="form2" action="{% url 'search' %}" method="post">
     {% csrf_token %}
-    <span class="btn btn-info">
-    {{ form}}
+    <div class="row justify-content-center">
+    <div class="btn btn-info">
+    
+    {{ form.as_p}}
+     </div>
+    <input type="submit"  class="btn btn-success" value="Chercher" >
+
    
-    <input type="submit" class="btn btn-success" value="Chercher" />
-    </span>
+    </div>
 </form>
             
 {% endblock %}
