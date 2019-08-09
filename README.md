@@ -1,5 +1,5 @@
 # pur_beur_django
-Ce projet construit une application permettant de rechercher des aliments plus sains et sauvegarder au besoin la recherche au besoin. Cette application dispose des fonctionnalités suivantes:
+Ce projet construit une application permettant de rechercher des aliments plus sains et sauvegarder au besoin la recherche . Cette application dispose des fonctionnalités suivantes:
 
 - Affichage du champ de recherche dès la page d’accueil
 
