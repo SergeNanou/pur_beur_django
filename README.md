@@ -1,7 +1,7 @@
 # pur_beur_django
 Ce projet construit une application disposant des fonctionnalités suivantes:
 
- -Affichage du champ de recherche dès la page d’accueil
+- Affichage du champ de recherche dès la page d’accueil
 
 - Interface responsive
 
