@@ -15,6 +15,14 @@ Ce projet construit une application permettant de rechercher des aliments plus s
 
 -Python(Framework Django)
 
+Trois applications construites dans le projet Django:
+
+-Application Connect(Gestion des comptes utilisateurs et admin)
+
+-Application Research(Rechercher les substituts d'aliments dans notre base de donnée)
+
+-Application Save(Sauvegarder les aliments recherchés)
+
 # Deploiement de l'application
 Heroku
 
