@@ -11,9 +11,8 @@ Ce projet construit une application permettant de rechercher des aliments plus s
 
 -Javascript, Html, Css, Boostrap
 
-# Backend de l'application
+# Backend de l'application(Python(Framework Django))
 
--Python(Framework Django)
 
 Trois applications construites dans le projet Django:
 
