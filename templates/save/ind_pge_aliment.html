@@ -14,13 +14,9 @@
   
   <title>Pure Beurre </title> 
   {% load static %}
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css">
-  
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css">
 <link rel="stylesheet" type="text/css" href="{% static 'css/creative.css' %}"> 
   <style type="text/css">
     header.masthead {
@@ -59,9 +55,6 @@
                 
                 {{ form.as_p }}
             </form>
-          </a> 
-              
-
           </li>
           <li class="nav-item">
             {% if user.is_authenticated %}

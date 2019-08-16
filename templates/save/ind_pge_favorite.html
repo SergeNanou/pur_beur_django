@@ -128,15 +128,15 @@
     </div>
   </section>
   {% if save.has_other_pages %}
-    <nav aria-label="Page navigation conatiner"></nav>
-    <ul class="pagination justify-content-center">
-      {% if save.has_previous %}
-      <li><a href="?page={{ save.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-      {% endif %}
-      {% if save.has_next %}
-      <li><a href="?page={{ save.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-      {% endif %}
-    </ul>
+    <nav aria-label="Page navigation conatiner">
+      <ul class="pagination justify-content-center">
+        {% if save.has_previous %}
+          <li><a href="?page={{ save.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+        {% endif %}
+        {% if save.has_next %}
+          <li><a href="?page={{ save.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+        {% endif %}
+      </ul>
     </nav>
   {% endif %}
     
