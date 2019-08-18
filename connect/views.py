@@ -7,21 +7,27 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from research.forms import SearchForm
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+
+
+# Views for connex  reception page.
 def ind_pge_connex(request):
     form = SearchForm()
     return render(request,'ind_pge_connex.html',{'form':form})
+# Views for legal page.
 def legal(request):
     return render(request, 'Mentions_legales.html')
+# Views for connex page.
 def index(request):
     return render(request,'connect/index.html')
 @login_required
 def special(request):
     return HttpResponse("You are logged in !")
+# Views for deconnect user.
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('reception'))
+# Views for register user.
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -40,6 +46,7 @@ def register(request):
     return render(request,'connect/registration.html',
                           {'user_form':user_form,
                            'registered':registered})
+# Views for connect user.
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -53,7 +60,8 @@ def user_login(request):
                 return HttpResponse("Your account was inactive.")
         else:
             print("Someone tried to login and failed.")
-            print("They used username: {} and password: {}".format(username,password))
+            print("They used username: {} and password: {}".
+                    format(username,password))
             return HttpResponse("Invalid login details given")
     else:
         return render(request, 'connect/login.html', {})

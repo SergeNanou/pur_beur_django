@@ -1,6 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+# Create model Product Substitut
 class Product_subs(models.Model):
     name_product = models.CharField(max_length=1000)
     name_product_subs = models.CharField(max_length=1000)
@@ -16,9 +17,9 @@ class Product_subs(models.Model):
         verbose_name = "Product_subs"
     def __str__(self):
         return '{} {} {} {} {} {} {}'.format(self.name_product,
-                                          self.name_product_subs,
-                                          self.image_product,
-                                          self.image_product_subs,
-        	                              self.prod_sub_nut,
-                                          self.nut_100,
-                                          self.nut_levels)
+                                             self.name_product_subs,
+                                             self.image_product,
+                                             self.image_product_subs,
+        	                                 self.prod_sub_nut,
+                                             self.nut_100,
+                                             self.nut_levels)

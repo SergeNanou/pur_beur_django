@@ -7,19 +7,22 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+
+# variables initialization.
 
 form = SearchForm()
 save = []
+
+# save substitut of product views
 @login_required(login_url='/index/')
 def save_prod(request):
-
+    # take a user id
     current_user = request.user
     if request.method == "POST":
 
         query = request.POST['subs_0']
         query = query.split("+")
-        
+        # insert product in database
         Product_subs.objects.update_or_create(name_product=query[1],
                                               name_product_subs=query[0],
                                               image_product_subs=query[3],
@@ -29,6 +32,7 @@ def save_prod(request):
                                               url_subs=query[6],
                                               nut_levels=query[7],
                                               image_product=query[2])
+    # take product save by user
     save = list(Product_subs.objects.filter(cuurent_user=current_user.id).values())
     # Slice pages
     paginator = Paginator(save, 2)
@@ -41,10 +45,8 @@ def save_prod(request):
         # If page is not an integer, deliver first page.
         save = paginator.page(1)
     except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
         save = paginator.page(paginator.num_pages)
-            
-        
+
     context_1 = {'form':form,'save': save}
           
         
@@ -61,10 +63,11 @@ q_sugar_1 = ''
 q_sodium_fr = ''
 q_sodium_1 = ''
 context = {}
+
+# views for aliment feature
 @login_required(login_url='/index/')
 def aliment(request):
-    
-    
+
     if request.method == "POST":
         query_1 = request.POST['subs_1']
         query_1 = query_1.split('+')
