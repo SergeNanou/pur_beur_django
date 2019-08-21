@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+from research.algo import algorythm
+from research.algo import algo_image
 from research.forms import SearchForm
 from research.models import Category
 from research.models import Product
@@ -9,17 +10,8 @@ from django.db.models import Q
 
 
 # variable initiliazation 
-prod_list = []
-b = []
-c = []
-a_1 = 0
-b_1 = 0
-context_1 = {}
-nutri = ''
-product = ''
-prod_image_0 = ''
+
 form = SearchForm()
-message = ''
 
 # view for reception page
 def reception(request):
@@ -29,8 +21,16 @@ def reception(request):
                   {'form': form, 'message': message})
 
 
-@login_required(login_url='/index/')
+
 def search(request):
+    # variable initialization
+    prod_list = []
+    context_1 = {}
+    nutri = ''
+    product = ''
+    prod_image_0 = ''
+    message = ''
+
 
     # Check if the session has already been created.
     # If created, get their values and store it.
@@ -51,31 +51,33 @@ def search(request):
                                (name_product__contains=product)
                                .values('nutrition_score'))
                 if nutri_0:
-                    nutri = list(Product.objects.filter
-                                 (name_product__contains=product)
-                                 .values('nutrition_score'))[0]
-                    prod_image_0 = list(Product.objects.filter
-                                        (name_product__contains=product)
-                                        .values('image'))[0]
-                    prod_image_0 = prod_image_0['image']
-                    # prod_image_0 = '/media/'+ prod_image_0
-                    c = list(Category.objects.filter
-                             (cat_product__name_product__contains=product).
-                             values('name'))[0]
-                    if (nutri['nutrition_score'] == 'e' or
-                        nutri['nutrition_score'] == 'd' or
-                        nutri['nutrition_score'] == 'c'):
-                        prod_list = list(Product.objects.filter
-                                         (category__name=c['name']).
-                                         filter(Q(nutrition_score='a')
-                                         |Q(nutrition_score='b')).
-                                         values().order_by('?'))
-                    elif(nutri['nutrition_score'] == 'b'
-                         or nutri['nutrition_score'] == 'a'):
-                        prod_list = list(Product.objects.filter
-                                          (category__name=c['name'],
-                                          nutrition_score='a').values().
-                                          order_by('?'))
+                    prod_list = algorythm(product)
+                    prod_image_0 = algo_image(product)
+                    # nutri = list(Product.objects.filter
+                    #              (name_product__contains=product)
+                    #              .values('nutrition_score'))[0]
+                    # prod_image_0 = list(Product.objects.filter
+                    #                     (name_product__contains=product)
+                    #                     .values('image'))[0]
+                    # prod_image_0 = prod_image_0['image']
+                    # # prod_image_0 = '/media/'+ prod_image_0
+                    # c = list(Category.objects.filter
+                    #          (cat_product__name_product__contains=product).
+                    #          values('name'))[0]
+                    # if (nutri['nutrition_score'] == 'e' or
+                    #     nutri['nutrition_score'] == 'd' or
+                    #     nutri['nutrition_score'] == 'c'):
+                    #     prod_list = list(Product.objects.filter
+                    #                      (category__name=c['name']).
+                    #                      filter(Q(nutrition_score='a')
+                    #                      |Q(nutrition_score='b')).
+                    #                      values().order_by('?'))
+                    # elif(nutri['nutrition_score'] == 'b'
+                    #      or nutri['nutrition_score'] == 'a'):
+                    #     prod_list = list(Product.objects.filter
+                    #                       (category__name=c['name'],
+                    #                       nutrition_score='a').values().
+                    #                       order_by('?'))
                     # Slice pages
                     paginator = Paginator(prod_list, 6)
                     # Get current page number

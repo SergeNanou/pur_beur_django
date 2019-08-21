@@ -15,10 +15,12 @@ def ind_pge_connex(request):
     return render(request,'ind_pge_connex.html',{'form':form})
 # Views for legal page.
 def legal(request):
+
     return render(request, 'Mentions_legales.html')
 # Views for connex page.
 def index(request):
-    return render(request,'connect/index.html')
+    form = SearchForm()
+    return render(request,'connect/index.html', {'form':form})
 @login_required
 def special(request):
     return HttpResponse("You are logged in !")

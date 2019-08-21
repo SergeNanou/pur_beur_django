@@ -4,10 +4,11 @@
 <head>
 
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.min.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.8.10/themes/smoothness/jquery-ui.css" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
@@ -58,20 +59,33 @@
           </li>
           <li class="nav-item">
             {% if user.is_authenticated %}
-              <a class="nav-link js-scroll-trigger" href="{% url 'ind_pge_connex' %}"><i class="fa fa-user fa-2x" aria-hidden="true" ></i></a>
+              <a class="nav-link js-scroll-trigger" href="{% url 'ind_pge_connex' %}">
+                <div>
+                    <span class="text">compte</span>
+                    <span class="icon"><i class="fa fa-user fa-2x" aria-hidden="true" ></i></span>
+                </div>
+                </a>
             {% else %}
-              <a class="nav-link js-scroll-trigger" href="{% url 'user_login' %}"><button>Créer un compte </button></a>
+              <a class="nav-link js-scroll-trigger" href="{% url 'index' %}"><button>Créer un compte </button></a>
             {% endif %}
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="{% url 'save' %}">
-                 <img src="{% static 'img/Ca.JPG'  %}" height="25px" width="30px" alt="Mes aliments"></a> 
-            </button>
-            </a>
-            
+                <div>
+                    <span class="text">Mes aliments</span>
+                    <span class="icon"> <img src="{% static 'img/Ca.JPG'  %}" height="25px" width="30px" alt="Mes aliments"></span>
+                </div>       
+            </a> 
+              
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+            <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">
+              <div>
+                  <span class="text">Deconnexion</span>
+                  <span class="icon"> <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></span>
+              </div>  
+              
+            </a>
           </li>
         </ul>
       </div>
@@ -93,7 +107,7 @@
 
   
  <!-- Contact Section -->
-  <section class="page-section bg-primary">
+  <section class="page-section " style="background-color:#86ebe6 ">
     <div class="container">
 
       <div class="row h-100">
@@ -145,7 +159,7 @@
         </div>
         <div class="col-lg-6">
           <div class="small text-center text-muted">
-          <a  href="#contact">Contact</a>
+          <a  href="/#contact">Contact</a>
           
           </div>
         </div>
@@ -153,7 +167,7 @@
     </div>
   </footer>
   <!-- Bootstrap core JavaScript -->
-  <script src="https://code.jquery.com/jquery.min.js"></script>
+  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
