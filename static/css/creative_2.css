@@ -10,13 +10,6 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
- body {
-        
-        overflow-x: hidden;
-        overflow-y: auto;
-        overflow : -moz-scrollbars-horizontal;
-
-        }
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -10676,7 +10669,16 @@ hr.light {
   }
 }
 
-
+header.masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 72px);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("../img/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/bg-masthead.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
 
 
 header.masthead h1 {
@@ -10685,8 +10687,8 @@ header.masthead h1 {
 
 @media (min-width: 992px) {
   header.masthead {
-    height: 40vh;
-    min-height: 10rem;
+    height: 100vh;
+    min-height: 40rem;
     padding-top: 72px;
     padding-bottom: 0;
   }
@@ -10750,10 +10752,6 @@ header.masthead h1 {
 #portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-name {
   font-size: 1.2rem;
 }
-
-#portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption {
-  opacity: 1;
-}
 .roundedImage, .roundedImageBorder{
   overflow:hidden;
   -webkit-border-radius:40px;
@@ -10766,6 +10764,10 @@ header.masthead h1 {
 
 .roundedImageBorder{
   border: 1px solid #006699;
+}
+
+#portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption {
+  opacity: 1;
 }
 @media (max-width: 641px) {
     span.icon {display:none}

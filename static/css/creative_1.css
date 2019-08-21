@@ -10765,7 +10765,15 @@ header.masthead h1 {
 .roundedImageBorder{
   border: 1px solid #006699;
 }
+@media (max-width: 641px) {
+    span.icon {display:none}
+    span.text {display:inline-block}
+}
 
+@media (min-width: 640px) {
+    span.icon {display:inline-block}
+    span.text {display:none}
+}
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
