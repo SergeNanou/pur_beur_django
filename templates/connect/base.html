@@ -75,11 +75,11 @@
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
          <div class="row ">
-          <div class ="col-lg-5" style="left:50px">
+          <div class ="col-lg-5">
            <h3 class="text-uppercase text-white font-weight-bold"> <a  href="{% url 'connect:register' %}">Creation de compte
             </a></h3>
           </div>
-          <div class ="col-lg-5" style="left:25px">
+          <div class ="col-lg-5" >
            <h3 class="text-uppercase text-white font-weight-bold"> 
             {# Some logic on what to display for last item#}
             {% if user.is_authenticated %}
@@ -94,8 +94,8 @@
         </div>
         <div class="col-lg-8 align-self-baseline">
           <p class="text-white-75 font-weight-light mb-5">
-            {% block body_block %}
-            {% endblock %}</p>  
+            <!-- {% block body_block %}
+            {% endblock %} --></p>  
         </div>
         
       </div>
