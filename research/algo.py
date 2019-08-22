@@ -8,12 +8,12 @@ def algorythm(product):
     prod_list = []
     nutri = ''
   
-
+    # take nutrition score
     nutri = list(Product.objects.filter
                (name_product__contains=product)
                .values('nutrition_score'))[0]
     
-    # prod_image_0 = '/media/'+ prod_image_0
+    # take category product
     c = list(Category.objects.filter
            (cat_product__name_product__contains=product).
            values('name'))[0]
