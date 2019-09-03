@@ -5,7 +5,7 @@ from django.test import TestCase
 
 import requests
 import regex as re
-import unidecode
+
 
 def search(search_term,pge_size):
 
