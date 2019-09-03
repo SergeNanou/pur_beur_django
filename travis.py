@@ -1,4 +1,4 @@
-from . import *
+from amateurs_nutella.settings import *
 
 DATABASES = {
     'default': {
